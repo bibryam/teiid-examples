@@ -54,7 +54,7 @@ oc secrets link dv-operator dv-pull-secret --for=pull
 
 
 
-oc create -f 
+oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/postgresql/rdbms-springboot.yml
 
 
 

@@ -23,3 +23,6 @@ INSERT INTO ORDERS ( name, ownerId) VALUES
 
 
 oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/mysql/rdbms-springboot.yml
+
+
+mysql-postgresql-federation.yml
