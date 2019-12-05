@@ -50,7 +50,7 @@ spec:
 
         SET SCHEMA portfoliofederation;
 
-        CREATE VIEW MyOrders(id bigint PRIMARY KEY, name string, ownerId string) AS
+        CREATE VIEW MyOrders(id bigint PRIMARY KEY, name string, ownerId integer) AS
             SELECT id, name, ownerId
             FROM mysqlorders.ORDERS;
 
