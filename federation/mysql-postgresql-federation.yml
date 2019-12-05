@@ -20,7 +20,7 @@ spec:
     - name: SPRING_DATASOURCE_SAMPLEDB2_DATABASENAME
       value: sampledb
     - name: SPRING_DATASOURCE_SAMPLEDB2_JDBCURL
-      value: 'jdbc:postgresql://postgresql/$(SPRING_DATASOURCE_SAMPLEDB_DATABASENAME)'
+      value: 'jdbc:postgresql://postgresql/$(SPRING_DATASOURCE_SAMPLEDB2_DATABASENAME)'
   build:
     source:
       ddl: >
@@ -31,37 +31,36 @@ spec:
         CREATE FOREIGN DATA WRAPPER mysql;
         CREATE FOREIGN DATA WRAPPER postgresql;
 
-        CREATE SERVER sampledb TYPE 'mysql' FOREIGN DATA WRAPPER mysql;
-        CREATE SERVER sampledb2 TYPE 'NONE' FOREIGN DATA WRAPPER postgresql;
+        CREATE SERVER mysqldb TYPE 'mysql' FOREIGN DATA WRAPPER mysql;
+        CREATE SERVER postgresqldb TYPE 'NONE' FOREIGN DATA WRAPPER postgresql;
 
-        CREATE SCHEMA accounts SERVER sampledb;
-        CREATE SCHEMA accounts2 SERVER sampledb2;
-        CREATE VIRTUAL SCHEMA portfolio;
+        CREATE SCHEMA mysqlorders SERVER mysqldb;
+        CREATE SCHEMA postgresqlcustomers SERVER postgresqldb;
+        CREATE VIRTUAL SCHEMA portfoliofederation;
 
-        SET SCHEMA accounts;
+        SET SCHEMA mysqlorders;
 
-        IMPORT FOREIGN SCHEMA public FROM SERVER sampledb INTO accounts
+        IMPORT FOREIGN SCHEMA public FROM SERVER mysqldb INTO mysqlorders
         OPTIONS("importer.useFullSchemaName" 'false');
 
-        SET SCHEMA accounts2;
+        SET SCHEMA postgresqlcustomers;
 
-        IMPORT FOREIGN SCHEMA public FROM SERVER sampledb2 INTO accounts2
+        IMPORT FOREIGN SCHEMA public FROM SERVER postgresqldb INTO postgresqlcustomers
         OPTIONS("importer.useFullSchemaName" 'false');
 
-        SET SCHEMA portfolio;
+        SET SCHEMA portfoliofederation;
 
         CREATE VIEW MyOrders(id bigint PRIMARY KEY, name string) AS
             SELECT id, name
-            FROM accounts.ORDERS;
+            FROM mysqlorders.ORDERS;
 
         CREATE VIEW CustomerZip(id bigint PRIMARY KEY, name string, ssn string,
         zip string) AS
             SELECT c.ID as id, c.NAME as name, c.SSN as ssn, a.ZIP as zip
-            FROM accounts2.CUSTOMER c LEFT OUTER JOIN accounts2.ADDRESS a
+            FROM postgresqlcustomers.CUSTOMER c LEFT OUTER JOIN postgresqlcustomers.ADDRESS a
             ON c.ID = a.CUSTOMER_ID;
 
-        CREATE VIEW Federation(id bigint PRIMARY KEY, name string) AS
+        CREATE VIEW CustomerOrders(id bigint PRIMARY KEY, name string) AS
             SELECT c.ID as id, o.name as name
-            FROM accounts2.CUSTOMER c LEFT OUTER JOIN accounts.ORDERS o
+            FROM postgresqlcustomers.CUSTOMER c LEFT OUTER JOIN mysqlorders.ORDERS o
             ON c.ID = o.id;
-

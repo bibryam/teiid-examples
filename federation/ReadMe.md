@@ -1,28 +1,7 @@
-oc new-app mysql:5.7 --insecure-registry=true -e MYSQL_USER=user -e MYSQL_PASSWORD=mypassword -e MYSQL_DATABASE=sampledb
+Prereqs:
 
-oc rsh $(oc get pods -o name -l app=mysql)
-mysql -u user -pmypassword
-use sampledb
-
-
- CREATE TABLE ORDERS
-(
-  id              INT unsigned NOT NULL AUTO_INCREMENT,
-  name            VARCHAR(150) NOT NULL,
-  ownerId           INT NOT NULL,
-  PRIMARY KEY     (id)
-);
-
-INSERT INTO ORDERS ( name, ownerId) VALUES
-  ( 'Sandy', 10),
-  ( 'Cookie', 11),
-  ( 'Charlie', 12);
-
- \quit
+mysql and postgresql dbs deployed
 
 
 
-oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/mysql/rdbms-springboot.yml
-
-
-mysql-postgresql-federation.yml
+oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/federation/mysql-postgresql-federation.yml
