@@ -23,6 +23,8 @@ INSERT INTO ORDERS ( name, ownerId) VALUES
   ( 'Cookie', 11),
   ( 'Charlie', 12);
 
+select * from ORDERS;
+
  \quit
 
 ## Create virtualization

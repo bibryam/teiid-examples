@@ -50,8 +50,8 @@ spec:
 
         SET SCHEMA portfoliofederation;
 
-        CREATE VIEW MyOrders(id bigint PRIMARY KEY, name string) AS
-            SELECT id, name
+        CREATE VIEW MyOrders(id bigint PRIMARY KEY, name string, ownerId string) AS
+            SELECT id, name, ownerId
             FROM mysqlorders.ORDERS;
 
         CREATE VIEW CustomerZip(id bigint PRIMARY KEY, name string, ssn string,
@@ -63,4 +63,4 @@ spec:
         CREATE VIEW CustomerOrders(id bigint PRIMARY KEY, name string) AS
             SELECT c.ID as id, o.name as name
             FROM postgresqlcustomers.CUSTOMER c LEFT OUTER JOIN mysqlorders.ORDERS o
-            ON c.ID = o.id;
+            ON c.ID = o.ownerId;
