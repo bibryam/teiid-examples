@@ -1,7 +1,5 @@
-Prereqs:
+##Prerequisites: run mysql and postgresql
 
-mysql and postgresql dbs deployed
-
-
+## Create virtualization
 
 oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/federation/mysql-postgresql-federation.yml

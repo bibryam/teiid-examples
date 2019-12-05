@@ -1,4 +1,4 @@
-Create a PostgreSQL database 
+##Create a PostgreSQL database 
  
 oc new-app \
   -e POSTGRESQL_USER=user \
@@ -6,13 +6,13 @@ oc new-app \
   -e POSTGRESQL_DATABASE=sampledb \
   postgresql:9.6
 
-Once the PostgreSQL Pod is in Running Status, connect to it and run psql client
+##Once the PostgreSQL Pod is in Running Status, connect to it and run psql client
 
 oc rsh $(oc get pods -o name -l app=postgresql)
 psql -U user sampledb
 
 
-Create a few tables and populate with data
+##Create a few tables and populate with data
 
 CREATE TABLE CUSTOMER
 (
@@ -37,22 +37,7 @@ INSERT INTO ADDRESS (ID, STREET, ZIP, CUSTOMER_ID) VALUES (10, 'Main St', '12345
 \q
 exit
 
-
-
-
-oc create secret docker-registry dv-pull-secret --docker-server=registry.redhat.io --docker-username=$MINISHIFT_USERNAME --docker-password=$MINISHIFT_PASSWORD --docker-email=$MINISHIFT_EMAIL
-
-oc secrets link builder dv-pull-secret
-oc secrets link builder dv-pull-secret --for=pull
-
-
-After operator install
-
-oc secrets link dv-operator dv-pull-secret --for=pull
-
-
-
-
+## Create virtualization
 
 oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/postgresql/rdbms-springboot.yml
 
