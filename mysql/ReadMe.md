@@ -3,7 +3,7 @@
 ```
 oc new-app mysql:5.7 --insecure-registry=true -e MYSQL_USER=user -e MYSQL_PASSWORD=mypassword -e MYSQL_DATABASE=sampledb
 ```
-## Once the db Pod is in Running Status, connect to it and run psql client
+## Once the database Pod is in Running Status, connect to it and run mysql client
 ```
 oc rsh $(oc get pods -o name -l app=mysql)
 mysql -u user -pmypassword
@@ -27,6 +27,7 @@ INSERT INTO ORDERS ( name, ownerId) VALUES
 select * from ORDERS;
 
  \quit
+ exit
 ```
 ## Create virtualization
 ```
