@@ -1,15 +1,15 @@
-##Create a database 
+## Create a database 
 
 ```
 oc new-app mysql:5.7 --insecure-registry=true -e MYSQL_USER=user -e MYSQL_PASSWORD=mypassword -e MYSQL_DATABASE=sampledb
 ```
-##Once the db Pod is in Running Status, connect to it and run psql client
+## Once the db Pod is in Running Status, connect to it and run psql client
 ```
 oc rsh $(oc get pods -o name -l app=mysql)
 mysql -u user -pmypassword
 use sampledb
 ```
-##Create a few tables and populate with data
+## Create a few tables and populate with data
 ```SQL
  CREATE TABLE ORDERS
 (
