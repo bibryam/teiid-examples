@@ -1,8 +1,7 @@
-oc apply -f - << EOF
 apiVersion: teiid.io/v1alpha1
 kind: VirtualDatabase
 metadata:
-  name: dv-customer2
+  name: rdbms-springboot-sqlserver
 spec:
   replicas: 1
   env:
@@ -13,15 +12,15 @@ spec:
   - name: SPRING_DATASOURCE_SAMPLEDB_DATABASENAME
     value: sampledb
   - name: SPRING_DATASOURCE_SAMPLEDB_JDBCURL
-    value: jdbc:postgresql://postgresql/$(SPRING_DATASOURCE_SAMPLEDB_DATABASENAME)
+    value: jdbc:sqlserver://sqlserver/$(SPRING_DATASOURCE_SAMPLEDB_DATABASENAME)
   build:
     source:
       ddl: |
         CREATE DATABASE customer OPTIONS (ANNOTATION 'Customer VDB');
         USE DATABASE customer;
 
-        CREATE FOREIGN DATA WRAPPER postgresql;
-        CREATE SERVER sampledb TYPE 'NONE' FOREIGN DATA WRAPPER postgresql;
+        CREATE FOREIGN DATA WRAPPER sqlserver;
+        CREATE SERVER sampledb FOREIGN DATA WRAPPER sqlserver;
 
         CREATE SCHEMA accounts SERVER sampledb;
         CREATE VIRTUAL SCHEMA portfolio;
@@ -35,4 +34,3 @@ spec:
             SELECT c.ID as id, c.NAME as name, c.SSN as ssn, a.ZIP as zip
             FROM accounts.CUSTOMER c LEFT OUTER JOIN accounts.ADDRESS a
             ON c.ID = a.CUSTOMER_ID;
-EOF

@@ -39,5 +39,5 @@ exit
 ```
 ## Create virtualization
 ```
-oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/postgresql/rdbms-springboot.yml
+oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/postgresql/vdb.yml
 ```

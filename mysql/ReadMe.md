@@ -31,5 +31,5 @@ select * from ORDERS;
 ```
 ## Create virtualization
 ```
-oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/mysql/rdbms-springboot.yml
+oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/mysql/vdb.yml
 ```

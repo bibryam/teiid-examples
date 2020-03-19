@@ -2,7 +2,7 @@
 
 ## Create virtualization
 ```
-oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/federation/mysql-postgresql-federation.yml
+oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/federation/vdb.yml
 ```
 
 ## View data
