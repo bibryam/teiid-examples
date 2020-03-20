@@ -21,8 +21,8 @@ spec:
         CREATE DATABASE customer OPTIONS (ANNOTATION 'Customer VDB');
         USE DATABASE customer;
 
-        CREATE FOREIGN DATA WRAPPER sqlserver;
-        CREATE SERVER sampledb FOREIGN DATA WRAPPER sqlserver;
+        CREATE FOREIGN DATA WRAPPER mssql-server;
+        CREATE SERVER sampledb FOREIGN DATA WRAPPER mssql-server;
 
         CREATE SCHEMA accounts SERVER sampledb;
         CREATE VIRTUAL SCHEMA portfolio;
