@@ -6,9 +6,9 @@ spec:
   replicas: 1
   env:
   - name: SPRING_DATASOURCE_SAMPLEDB_USERNAME
-    value: user
+    value: sa
   - name: SPRING_DATASOURCE_SAMPLEDB_PASSWORD
-    value: mypassword
+    value: P@ssw0rd
   - name: SPRING_DATASOURCE_SAMPLEDB_DATABASENAME
     value: sampledb
   - name: SPRING_DATASOURCE_SAMPLEDB_JDBCURL
