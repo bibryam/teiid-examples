@@ -22,7 +22,7 @@ spec:
         USE DATABASE customer;
 
         CREATE FOREIGN DATA WRAPPER sqlserver;
-        CREATE SERVER sampledb FOREIGN DATA WRAPPER sqlserver;
+        CREATE SERVER sampledb TYPE 'NONE' FOREIGN DATA WRAPPER sqlserver;
 
         CREATE SCHEMA accounts SERVER sampledb;
         CREATE VIRTUAL SCHEMA portfolio;
