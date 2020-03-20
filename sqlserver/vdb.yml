@@ -12,7 +12,7 @@ spec:
   - name: SPRING_DATASOURCE_SAMPLEDB_DATABASENAME
     value: sampledb
   - name: SPRING_DATASOURCE_SAMPLEDB_JDBCURL
-    value: jdbc:sqlserver://sqlserver/$(SPRING_DATASOURCE_SAMPLEDB_DATABASENAME)
+    value: jdbc:sqlserver://mssql/$(SPRING_DATASOURCE_SAMPLEDB_DATABASENAME)
   build:
     source:
       dependencies:
