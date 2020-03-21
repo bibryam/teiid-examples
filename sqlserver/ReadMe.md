@@ -16,12 +16,14 @@ oc exec $SQL_POD -- /opt/mssql-tools/bin/sqlcmd -U sa -P P@ssw0rd -d sampledb -Q
 ```
 oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/sqlserver/vdb.yml
 ```
+
+## Validate
+
+https://foo.com/odata/portfolio/CustomerZip?$filter=startswith(name,%27Joseph%27)&$format=JSON
+
  
-## Resources
+## SQL Server Resources
 
 https://github.com/microsoft/sqlworkshops-sqlonopenshift/  
 https://portworx.com/run-ha-sql-server-red-hat-openshift/  
 
-
-## Validate
-https://rdbms-springboot-dv-demo.example.com/odata/portfolio/CustomerZip?$filter=startswith(name,%27Joseph%27)&$format=JSON
