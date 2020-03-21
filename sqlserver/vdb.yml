@@ -12,7 +12,8 @@ spec:
   - name: SPRING_DATASOURCE_SAMPLEDB_DATABASENAME
     value: sampledb
   - name: SPRING_DATASOURCE_SAMPLEDB_JDBCURL
-    value: jdbc:sqlserver://mssql/$(SPRING_DATASOURCE_SAMPLEDB_DATABASENAME)
+#    value: jdbc:sqlserver://mssql/$(SPRING_DATASOURCE_SAMPLEDB_DATABASENAME)
+    value: jdbc:sqlserver://mssql:1433;databaseName=$(SPRING_DATASOURCE_SAMPLEDB_DATABASENAME);InstanceName=tempdb
   build:
     source:
       dependencies:
@@ -28,7 +29,7 @@ spec:
         CREATE VIRTUAL SCHEMA portfolio;
 
         SET SCHEMA accounts;
-        IMPORT FOREIGN SCHEMA public FROM SERVER sampledb INTO accounts OPTIONS("importer.useFullSchemaName" 'false');
+        IMPORT FOREIGN SCHEMA dbo FROM SERVER sampledb INTO accounts OPTIONS("importer.useFullSchemaName" 'false');
 
         SET SCHEMA portfolio;
 
