@@ -15,6 +15,11 @@ oc exec $SQL_POD -- /opt/mssql-tools/bin/sqlcmd -U sa -P P@ssw0rd -d sampledb -Q
 ## Create virtualization
 ```
 oc create -f https://raw.githubusercontent.com/bibryam/teiid-examples/master/sqlserver/vdb.yml
+
+
+oc get vdb rdbms-springboot-sqlserver -o yaml | grep phase
+
+
 ```
 
 ## Validate
