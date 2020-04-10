@@ -1,0 +1,10 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: fuse-online
+  namespace: dv-ui
+spec:
+  channel: alpha
+  name: fuse-online
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
