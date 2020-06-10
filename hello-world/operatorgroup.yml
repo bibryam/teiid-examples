@@ -1,0 +1,8 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: dv-operator
+  namespace: dv-demo
+spec:
+  targetNamespaces:
+  - dv-demo
